@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function addTask(){
         // get trimmed value
 
-        const taskTest = taskInput.value.trim();
+        const taskText = taskInput.value.trim();
 
         // check if empty
 
-        if (!taskTest){
+        if (!taskText){
             alert("Please enter a task!");
         }
     }
