@@ -15,11 +15,35 @@ document.addEventListener('DOMContentLoaded', function () {
         if (savedTasks){
             const tasks = JSON.parse(savedTasks);
 
-            tasksArray.forEach(task => createTaskElement(task.text));
+            // recreate tasks in DOM
 
-        }
+            tasksArray.forEach(task => {
+            const li = document.createElement('li');
+            li.classList.add('task-item');
+            li.textContent= task.text;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = "Remove";
+            removeButton.classList.add('remove-btn');
+
+            removeBtn.addEventListener('click', function() {
+
+                // remove from DOM
+                taskList.removeChild(li);
+
+                // remove from array
+                tasks = tasks.filter(t => t.text !== task.text);
+                
+                // update local storage
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            });
+
+            li.appendChild(removeButton);
+            taskList.appendChild(li);
+        });
+
+
     }
-
 
     
     
